@@ -1,38 +1,37 @@
-let tripArr = [];
+let songArr = [];
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    document.getElementById("buttonAdd").addEventListener("click", newTrip);
+    document.getElementById("buttonAdd").addEventListener("click", newSong);
     
 }); 
 
-let newTrip = function() {
+let newSong = function() {
     
-    let name = document.getElementById("name").value;
-    let destination = document.getElementById("destination").value;
-    let month = document.getElementById("month").value;
-    let transportation = document.getElementById("transportation").value;
-    let numPeople = document.getElementById("numPeople").value;         
+    let title = document.getElementById("title").value;
+    let artist = document.getElementById("artist").value;
+    let album = document.getElementById("album").value;
+    let year = document.getElementById("year").value;
+    let genre = document.getElementById("genre").value;
+    let raiting = document.getElementById("raiting").value;         
 
-    let trip = new Trip(name, destination, month, transportation, numPeople);
+    let song = new Song(title, artist, album, year, genre, raiting);
 
-    if (!trip.isValid()) {
+    if (!song.isValid()) {
         alert("Please enter information in all input fields. " 
-        + "Number of guests must be greater than 0");
+        + "Year must be greater than 1 and in yyyy format. " + "Raiting must be 1-5");
+    } else {
+        songArr.push(song);
+        console.log(songArr);
     }
-    else {
-        tripArr.push(trip);
-        console.log(tripArr);
-    } 
-    document.getElementById("name").focus();
 };
 
 document.getElementById("buttonShow").addEventListener("click", function(){
-    let display = tripArr[0].toString();
+    let display = songArr[0].toString();
     document.getElementById("show").value = display;
     
 });
 
-document.getElementById("edit").addEventListener("mouseover", function(){
+/* document.getElementById("edit").addEventListener("mouseover", function(){
     let border = "------------------------------------------<br>"
     let displayAll = "<h2>Catologed Trips</h2>" + border;
         
@@ -56,4 +55,4 @@ document.getElementById("buttonTripFacts").addEventListener("click", function(){
 
     document.getElementById("tripFacts").innerHTML = "Number of trips: " + totalTripNumber + "<br>Number of people: " + totalPeopleNumber;
     
-});
+}); */

@@ -1,34 +1,29 @@
-let Trip = function (name, destination, month, transportation, numPeople) {
-    this.name = name;
-    this.destination = destination;
-    this.month = month;
-    this.transportation = transportation;
-    this.numPeople = numPeople;    
+let Song = function (title, artist, album, year, genre, raiting) {
+    this.title = title;
+    this.artist = artist;
+    this.album = album;
+    this.year = year;
+    this.genre = genre;
+    this.raiting = raiting;
 };
 
-Trip.prototype.isValid = function () {
-    if (this.name == "" || 
-    this.destination == "" || 
-    this.month == "" ||
-    this.transportation == "" ||
-    isNaN(this.numPeople)) 
-    {
+Song.prototype.isValid = function () {
+    if (this.title == "" || this.artist == "" || this.album == "" || isNaN(this.year) || this.genre == "" || isNaN(this.raiting)) {
         return false;
-    }
-    else if (this.numPeople < 1) 
-    {
+    } else if (this.year < 1 || this.year.length != 4 || this.year > 2023) {
         return false;
-    }
-    else 
-    {
+    } else if (this.raiting < 1 || this.raiting > 5) {
+        return false;
+    } else {
         return true;
     }
 };
 
-Trip.prototype.toString = function () {
-    return "Name: " + this.name + "\n" +
-    "Destination: " + this.destination + "\n" +
-    "Month: " + this.month + "\n" +
-    "Transportation: " + this.transportation + "\n" +
-    "Number of People: " + this.numPeople;
+Song.prototype.toString = function () {
+    return "Song Tilte: " + this.title + "\n" +
+    "Artist: " + this.artist + "\n" +
+    "Album: " + this.album + "\n" +
+    "Year: " + this.year + "\n" +
+    "Genre: " + this.genre + "\n" +
+    "Raiting: " + this.raiting;
 }
