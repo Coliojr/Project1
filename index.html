@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="themes/hw5theme.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    
+    <title>Travel Log</title>
+</head>
+<body>
+    <!-- ================================================================================================================= --> 
+    <!-- This page can be used as a gallery and summery of the website-->
+
+    <div data-role="page" id="home">
+
+        <!-- header --> 
+        <div data-role="header" data-theme='a'>
+            <h2>Travel Log - Home</h2>
+        
+            <!-- /navbar -->
+            <div data-role="navbar" data-theme='a'>
+                <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#add">Log A Trip</a></li>
+                <li><a href="#edit">Trip Information</a></li>
+                </ul>
+            </div>
+        </div>  
+       
+        <!-- content -->
+        <div data-role="content" data-theme='a' >
+            <h1>Travel Log</h1>
+            <p style="text-align: center; font-style: italic;">This website will help you log your trip data so you can keep exploring. </p>
+            <img src="./images/passport.jpg" alt="Passport and camera on a map of the world" > 
+        </div>
+        
+          <!-- notes footer --> 
+          <div data-role="footer" data-theme='a'>
+            <h3>Copyrigtht 2023 by Kelley and Phillip</h3>
+        </div>
+        
+    </div>
+
+   <!-- ================================================================================================================= -->
+   <!-- This page can be used to create a trip object that is basically an array of info that the user enters -->
+
+    <div data-role="page" id="add">
+
+        <!-- header --> 
+        <div data-role="header" data-theme='a'>
+            <h2>Travel Log - Log A Trip</h2>
+
+            <!-- /navbar -->
+            <div data-role="navbar" data-theme='a'>
+                <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#add">Log A Trip</a></li>
+                <li><a href="#edit">Trip Information</a></li>
+                </ul>
+            </div>
+        </div>  
+        
+        <!-- =================================== -->
+        
+        <!-- content -->
+        <div data-role="content" data-theme='a'>
+            <label for="name">Name:</label>
+            <input type="text" id="name"><br />
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination"><br />
+            <label for="month">Month:</label>
+            <input type="text" id="month"><br />
+            <label for="transportation">Transportation:</label>
+            <input type="text" id="transportation"><br />
+            <label for="numPeople">Number of people in group:</label>
+            <input type="number" id="numPeople"><br />
+            
+            <button type="button" id="buttonAdd">Add Trip to List</button>
+            <button type="button" id="buttonShow">Show Trip Information</button>
+
+            <textarea id="show" rows="5" cols="42"></textarea>
+        </div>
+
+        <!-- =================================== -->
+
+        <!-- notes footer --> 
+        <div data-role="footer" data-theme='a'>
+            <h3>Copyrigtht 2023 by Kelley and Phillip</h3>
+        </div>
+    </div>
+
+    <!-- ================================================================================================================= -->
+    <!-- This page can be used as summery of the database-->
+    
+    <div data-role="page" id="edit">
+        
+        <!-- header --> 
+        <div data-role="header" data-theme='a' class="wrap">
+            <h2>Travel Log - Trip Information</h2>
+       
+            <!-- /navbar -->
+            <div data-role="navbar" data-theme='a'>
+                <ul>
+                <li><a href="#home">Home Page</a></li>
+                <li><a href="#add">Log A Trip</a></li>
+                <li><a href="#edit">Trip Information</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- =================================== -->
+        <!-- content -->
+
+        <div data-role="content" data-theme='a'>
+            
+            <button type="button" id="buttonListAllTrips">Update Trip Information</button>
+            <p id="listAll"></p>
+
+            <button type="button" id="buttonTripFacts">Generate Trip Facts</button>
+            <p id="tripFacts"></p>
+        </div>
+
+
+
+        <!-- =================================== -->
+        <!-- notes footer --> 
+
+        <div data-role="footer" data-theme='b'>
+            <h3>Copyrigtht 2023 by Kelley and Phillip</h3>
+        </div>
+
+    </div>
+    
+
+
+
+    <!-- ================================================================================================================= -->
+    
+     <script src="library_trip.js"></script>
+     <script src="main.js"></script>
+</body>
+</html>
