@@ -1,20 +1,17 @@
+//Main array
 let songArr = [];
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    document.getElementById("buttonAdd").addEventListener("click", newSong);
-    
-}); 
-
+//Function to create an instance of song object
 let newSong = function() {
     
-    let title = document.getElementById("title").value;
-    let artist = document.getElementById("artist").value;
-    let album = document.getElementById("album").value;
-    let year = document.getElementById("year").value;
-    let genre = document.getElementById("genre").value;
-    let raiting = document.getElementById("raiting").value;         
+    let Title = document.getElementById("title").value;
+    let Artist = document.getElementById("artist").value;
+    let Album = document.getElementById("album").value;
+    let Year = document.getElementById("year").value;
+    let Genre = document.getElementById("genre").value;
+    let Raiting = document.getElementById("raiting").value;         
 
-    let song = new Song(title, artist, album, year, genre, raiting);
+    let song = new Song(Title, Artist, Album, Year, Genre, Raiting);
 
     if (!song.isValid()) {
         alert("Please enter information in all input fields. " 
@@ -25,34 +22,66 @@ let newSong = function() {
     }
 };
 
-document.getElementById("buttonShow").addEventListener("click", function(){
-    let display = songArr[0].toString();
-    document.getElementById("show").value = display;
-    
-});
 
-/* document.getElementById("edit").addEventListener("mouseover", function(){
-    let border = "------------------------------------------<br>"
-    let displayAll = "<h2>Catologed Trips</h2>" + border;
+document.addEventListener("DOMContentLoaded", function () {
+
+    createList();
+
+    //Buttons -----------------------------------------------------------------
+    document.getElementById("buttonAdd").addEventListener("click", newSong);
+    
+    document.getElementById("buttonShow").addEventListener("click", function(){
+        let display = songArr[0].toString();
+        document.getElementById("show").value = display;
         
-    for (let i = 0; i < tripArr.length; i++) {
-        displayAll = displayAll + "Trip " + parseInt(i+1) + ": <br>" + tripArr[i].name + 
-        "<br>" + tripArr[i].destination + "<br>" + tripArr[i].month  + "<br>" + tripArr[i].transportation  
-        + "<br>" + tripArr[i].numPeople + "<br>" + border + "<br>";
+    });
+
+    //Page before show code ----------------------------------------------------
+    $(document).on("pagebeforeshow", "#page3", function (event){
+        createList();
+    });
+
+    $(document).on("pagebeforeshow", "#page4", function (event) {
+        let localParm = localStorage.getItem("parm");
+        let localID = GetArrayPointer(localParm);
+
+        songArr = JSON.parse(localStorage.getItem);
+
+        //Maybe something like this?
+        //document.getElementById("oneTitle").innerHTML = "The title is: " + songArr[localID].Title;
+    });
+}); 
+
+function createList() {
+    var ulSongList = document.getElementById("ulSongList");
+    ulSongList.innerHTML = "";
+
+    var ul = document.createElement("ul");
+    songArr.forEach(function (element) {
+            var li = document.createElement("li");
+            li.classList.add("oneSong");
+            li.setAttribute("data-parm", element.ID);
+            li.innerHTML = element.ID + ": " + element.Title + " " + element.Genre;
+            ulSongList.appendChild(li);
+    });
+
+    var liArray = document.getElementsByClassName("oneSong");
+    Array.from(liArray).forEach(function (element) {
+        element.addEventListener("click", function () {
+            var parm = this.getAttribute("data-parm");
+            localStorage.setItem("parm", parm);
+            let stringSongArray = JSON.stringify(songArr);
+            localStorage.setItem("songArr", stringSongArray);
+            document.location.href = "index.html#page3";
+        });
+    });
+};
+
+//In the createList function, gets the ID from localStorage and checks where in the array matches the stored ID
+function GetArrayPointer(localID) {
+    for (let i = 0; i < songArr.length; i++) {
+        if (localID === songArr[i].ID) {
+            return i;
+        }
     }
-
-    document.getElementById("listAll").innerHTML = displayAll;
-});
-
-
-document.getElementById("buttonTripFacts").addEventListener("click", function(){
-    let totalTripNumber = tripArr.length;
-    let totalPeopleNumber = 0;
-    
-    for (let i = 0; i < tripArr.length; i++) {
-       totalPeopleNumber = parseInt(totalPeopleNumber) + parseInt(tripArr[i].numPeople);
-    }
-
-    document.getElementById("tripFacts").innerHTML = "Number of trips: " + totalTripNumber + "<br>Number of people: " + totalPeopleNumber;
-    
-}); */
+}

@@ -1,3 +1,4 @@
+//Object Constructor
 let Song = function (title, artist, album, year, genre, raiting) {
     this.title = title;
     this.artist = artist;
@@ -5,6 +6,7 @@ let Song = function (title, artist, album, year, genre, raiting) {
     this.year = year;
     this.genre = genre;
     this.raiting = raiting;
+    this.ID = Math.random().toString(16).slice(5);
 };
 
 Song.prototype.isValid = function () {
