@@ -9,14 +9,15 @@ let newSong = function() {
     let Album = document.getElementById("album").value;
     let Year = document.getElementById("year").value;
     let Genre = document.getElementById("genre").value;
-    let Raiting = document.getElementById("raiting").value;         
+    let Rating = document.getElementById("rating").value;         
 
-    let song = new Song(Title, Artist, Album, Year, Genre, Raiting);
+    let song = new Song(Title, Artist, Album, Year, Genre, Rating);
 
     if (!song.isValid()) {
         alert("Please enter information in all input fields. " 
         + "Year must be greater than 1 and in yyyy format. " + "Raiting must be 1-5");
     } else {
+        songArr = [];
         songArr.push(song);
         console.log(songArr);
     }
@@ -36,6 +37,15 @@ document.addEventListener("DOMContentLoaded", function () {
         
     });
 
+    document.getElementById("buttonClear").addEventListener("click", function () {
+        document.getElementById("title").value = "";
+        document.getElementById("artist").value = "";
+        document.getElementById("album").value = "";
+        document.getElementById("year").value = "";
+        document.getElementById("genre").value = "";
+        document.getElementById("rating").value = "";
+    });
+
 
 
 
@@ -50,18 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
         let localParm = localStorage.getItem("parm");
         let localID = GetArrayPointer(localParm);
 
-        songArr = JSON.parse(localStorage.getItem);
+        songArr = JSON.parse(localStorage.getItem(songArr));
 
-        console.log(songArr[localID - 1]);
+        console.log(songArr[localID]);
 
         //Maybe something like this?
         //document.getElementById("oneTitle").innerHTML = "The title is: " + songArr[localID].Title;
-        document.getElementById("oneTitle").innerHTML = "Title: " + songArr[localID - 1].Title;
-        document.getElementById("oneArtist").innerHTML = "Artist: " + songArr[localID - 1].Artist;
-        document.getElementById("oneAlbum").innerHTML = "Album: " + songArr[localID - 1].Album;
-        document.getElementById("oneYear").innerHTML = "Year: " + songArr[localID - 1].Year;
-        document.getElementById("oneGenre").innerHTML = "Genre: " + songArr[localID - 1].Genre;
-        document.getElementById("oneRaiting").innerHTML = "Raiting: " + songArr[localID - 1].Raiting;
+        document.getElementById("oneTitle").innerHTML = "Title: " + songArr[localID].Title;
+        document.getElementById("oneArtist").innerHTML = "Artist: " + songArr[localID].Artist;
+        document.getElementById("oneAlbum").innerHTML = "Album: " + songArr[localID].Album;
+        document.getElementById("oneYear").innerHTML = "Year: " + songArr[localID].Year;
+        document.getElementById("oneGenre").innerHTML = "Genre: " + songArr[localID].Genre;
+        document.getElementById("oneRaiting").innerHTML = "Raiting: " + songArr[localID].Rating;
         
     });
 }); 
