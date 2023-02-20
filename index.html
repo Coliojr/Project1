@@ -5,17 +5,17 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <link rel="stylesheet" href="themes/hw5theme.min.css" />
+        <link rel="stylesheet" href="themes/project1.min.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
         
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         
-        <title>Something About Music</title>
+        <title>FavMusicApp</title>
     </head>
     <body>
         <!-- ================================================================================================================= --> 
-        <!-- Page 1: Something Here -->
+        <!-- Page 1: Home Page -->
         <!-- ================================================================================================================= --> 
         
         <div data-role="page" id="page1">
@@ -27,10 +27,9 @@
                 <!-- /navbar -->
                 <div data-role="navbar" data-theme='a'>
                     <ul>
-                        <li><a href="#page1">Page 1</a></li>
-                        <li><a href="#page2">Page 2</a></li>
-                        <li><a href="#page3">Page 3</a></li>
-                        <li><a href="#page4">Page 4</a></li>
+                        <li><a href="#page1">Home</a></li>
+                        <li><a href="#page2">Add Song</a></li>
+                        <li><a href="#page3">Song List</a></li>
                     </ul>
                 </div>
             </div>  
@@ -42,7 +41,6 @@
                     This website will help a user list and organize their favorite songs. Uses the 'Song' object which takes in user info in its parameters.
                     It uses this stored data to create a list with some clickable li.
                 </p>
-                <!-- <img src="./images/passport.jpg" alt="Passport and camera on a map of the world" >  -->
             </div>
             
             <!-- notes footer --> 
@@ -53,22 +51,21 @@
         </div>
         
         <!-- ================================================================================================================= --> 
-        <!-- Page 2: Something Here -->
+        <!-- Page 2: Add Song -->
         <!-- ================================================================================================================= --> 
         
         <div data-role="page" id="page2">
             
             <!-- header --> 
             <div data-role="header" data-theme='a'>
-                <h2>Something About Music</h2>
+                <h2>Favorite Music App</h2>
                 
                 <!-- /navbar -->
                 <div data-role="navbar" data-theme='a'>
                     <ul>
-                        <li><a href="#page1">Page 1</a></li>
-                        <li><a href="#page2">Page 2</a></li>
-                        <li><a href="#page3">Page 3</a></li>
-                        <li><a href="#page4">Page 4</a></li>
+                        <li><a href="#page1">Home</a></li>
+                        <li><a href="#page2">Add Song</a></li>
+                        <li><a href="#page3">Song List</a></li>
                     </ul>
                 </div>
             </div>
@@ -107,35 +104,30 @@
         </div>
 
         <!-- ================================================================================================================= --> 
-        <!-- Page 3: Something Here -->
+        <!-- Page 3: Display List of Songs / Sort Songs -->
         <!-- ================================================================================================================= --> 
         
         <div data-role="page" id="page3">
             
             <!-- header --> 
             <div data-role="header" data-theme='a' class="wrap">
-                <h2>Something About Music</h2>
+                <h2>Favorite Music App</h2>
                 
                 <!-- /navbar -->
                 <div data-role="navbar" data-theme='a'>
                     <ul>
-                        <li><a href="#page1">Page 1</a></li>
-                        <li><a href="#page2">Page 2</a></li>
-                        <li><a href="#page3">Page 3</a></li>
-                        <li><a href="#page4">Page 4</a></li>
+                        <li><a href="#page1">Home</a></li>
+                        <li><a href="#page2">Add Song</a></li>
+                        <li><a href="#page3">Song List</a></li>
                     </ul>
                 </div>
             </div>
             
             <!-- content -->
             <div data-role="content" data-theme='a'>
-                <!-- <button type="button" id="buttonListAllTrips">Update Trip Information</button>
-                <p id="listAll"></p> -->
                 <P>Display the song/info the user entered and more information related to it</P>
                 <!--Section with <li> that is clickable-->
-                <ul id="songList"></ul>
-                <!-- <button type="button" id="buttonTripFacts">Button</button>
-                <p id="tripFacts"></p> -->
+                <div><ul id="ulSongList"></ul></div>
             </div>
             
             <!-- notes footer --> 
@@ -145,22 +137,21 @@
         </div>
 
         <!-- ================================================================================================================= --> 
-        <!-- Page 4: Something Here -->
+        <!-- Page 4: Song Details Page (Hidden) -->
         <!-- ================================================================================================================= --> 
         
         <div data-role="page" id="page4">
             
             <!-- header --> 
             <div data-role="header" data-theme='a'>
-                <h2>Something About Music</h2>
+                <h2>Favorite Music App</h2>
                 
                 <!-- /navbar -->
                 <div data-role="navbar" data-theme='a'>
                     <ul>
-                        <li><a href="#page1">Page 1</a></li>
-                        <li><a href="#page2">Page 2</a></li>
-                        <li><a href="#page3">Page 3</a></li>
-                        <li><a href="#page4">Page 4</a></li>
+                        <li><a href="#page1">Home</a></li>
+                        <li><a href="#page2">Add Song</a></li>
+                        <li><a href="#page3">Song List</a></li>
                     </ul>
                 </div>
             </div>  
@@ -169,9 +160,17 @@
             <div data-role="content" data-theme='a' >
                 <h1>Song List</h1>
                 <p style="text-align: center; font-style: italic;">
-                    List of songs and ability to sort by filters such as genre, date, alphabetical and by rating.
+                    Display details of song based on li link clicked
                 </p>
-                <!-- <img src="./images/passport.jpg" alt="Passport and camera on a map of the world" >  -->
+                <div>
+                    <p>Song Details:</p>
+                    <p id="oneTitle"></p>
+                    <p id="oneArtist"></p>
+                    <p id="oneAlbum"></p>
+                    <p id="oneYear"></p>
+                    <p id="oneGenre"></p>
+                    <p id="oneRaiting"></p>
+                </div>
             </div>
             
             <!-- notes footer --> 

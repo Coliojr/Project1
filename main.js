@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
         
     });
 
+
+
+
+
+
     //Page before show code ----------------------------------------------------
     $(document).on("pagebeforeshow", "#page3", function (event){
         createList();
@@ -47,8 +52,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         songArr = JSON.parse(localStorage.getItem);
 
+        console.log(songArr[localID - 1]);
+
         //Maybe something like this?
         //document.getElementById("oneTitle").innerHTML = "The title is: " + songArr[localID].Title;
+        document.getElementById("oneTitle").innerHTML = "Title: " + songArr[localID - 1].Title;
+        document.getElementById("oneArtist").innerHTML = "Artist: " + songArr[localID - 1].Artist;
+        document.getElementById("oneAlbum").innerHTML = "Album: " + songArr[localID - 1].Album;
+        document.getElementById("oneYear").innerHTML = "Year: " + songArr[localID - 1].Year;
+        document.getElementById("oneGenre").innerHTML = "Genre: " + songArr[localID - 1].Genre;
+        document.getElementById("oneRaiting").innerHTML = "Raiting: " + songArr[localID - 1].Raiting;
+        
     });
 }); 
 
@@ -56,7 +70,7 @@ function createList() {
     var ulSongList = document.getElementById("ulSongList");
     ulSongList.innerHTML = "";
 
-    var ul = document.createElement("ul");
+    //var ul = document.createElement("ul");
     songArr.forEach(function (element) {
             var li = document.createElement("li");
             li.classList.add("oneSong");
