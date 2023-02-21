@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("oneAlbum").innerHTML = "Album: " + songArr[localID].Album;
         document.getElementById("oneYear").innerHTML = "Year: " + songArr[localID].Year;
         document.getElementById("oneGenre").innerHTML = "Genre: " + songArr[localID].Genre;
-        document.getElementById("oneRaiting").innerHTML = "Raiting: " + songArr[localID].Rating;
+        document.getElementById("oneRating").innerHTML = "Rating: " + songArr[localID].Rating;
         
     });
 }); 
@@ -80,7 +80,7 @@ function createList() {
     var ulSongList = document.getElementById("ulSongList");
     ulSongList.innerHTML = "";
 
-    //var ul = document.createElement("ul");
+    var ul = document.createElement("ul");
     songArr.forEach(function (element) {
             var li = document.createElement("li");
             li.classList.add("oneSong");
@@ -89,6 +89,7 @@ function createList() {
             ulSongList.appendChild(li);
     });
 
+//---------------click function that jumps to #page4--------------------------------------------
     var liArray = document.getElementsByClassName("oneSong");
     Array.from(liArray).forEach(function (element) {
         element.addEventListener("click", function () {
@@ -96,7 +97,7 @@ function createList() {
             localStorage.setItem("parm", parm);
             let stringSongArray = JSON.stringify(songArr);
             localStorage.setItem("songArr", stringSongArray);
-            document.location.href = "index.html#page3";
+            document.location.href = "index.html#page4";
         });
     });
 };
