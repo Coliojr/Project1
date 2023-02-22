@@ -223,3 +223,13 @@ button {
 .oneSong {
 	color: #D45F6B;
 }
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+  }
+
+.logoImg {
+	max-width: 75%;
+  }
