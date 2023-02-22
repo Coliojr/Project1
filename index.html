@@ -111,7 +111,7 @@
         <div data-role="page" id="page3">
             
             <!-- header --> 
-            <div data-role="header" data-theme='a' class="wrap">
+            <div data-role="header" data-theme='a'>
                 <h2>Favorite Music App</h2>
                 
                 <!-- /navbar -->
@@ -122,13 +122,15 @@
                         <li><a href="#page3">Song List</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>  
             
             <!-- content -->
             <div data-role="content" data-theme='a'>
+                <h2>Song List</h2>
                 <P>Display the song/info the user entered and more information related to it</P>
                 <!--Section with <li> that is clickable-->
                 <div><ul id="ulSongList"></ul></div>
+                <input type="button" value="Sort By Rating" id="buttonSortRating" data-inline="true" />
             </div>
             
             <!-- notes footer --> 
@@ -155,16 +157,16 @@
                         <li><a href="#page3">Song List</a></li>
                     </ul>
                 </div>
-            </div>  
+            </div>    
             
             <!-- content -->
             <div data-role="content" data-theme='a' >
-                <h1>Song List</h1>
+                
                 <p style="text-align: center; font-style: italic;">
                     Display details of song based on li link clicked
                 </p>
                 <div>
-                    <p>Song Details:</p>
+                    <h3>Song Details:</h3>
                     <p id="oneTitle"></p>
                     <p id="oneArtist"></p>
                     <p id="oneAlbum"></p>

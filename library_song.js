@@ -12,7 +12,7 @@ let Song = function (title, artist, album, year, genre, raiting) {
 Song.prototype.isValid = function () {
     if (this.Title == "" || this.Artist == "" || this.Album == "" || isNaN(this.Year) || this.Genre == "" || isNaN(this.Rating)) {
         return false;
-    } else if (this.Year < 1 || this.Year.length != 4 || this.Year > 2023) {
+    } else if (this.Year < 1 || this.Year.length != 4) {
         return false;
     } else if (this.Rating < 1 || this.Rating > 5) {
         return false;

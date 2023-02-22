@@ -2,7 +2,7 @@
 let songArr = [];
 
 //Function to create an instance of song object
-let newSong = function() {
+/* let newSong = function() {
     
     let Title = document.getElementById("title").value;
     let Artist = document.getElementById("artist").value;
@@ -21,7 +21,7 @@ let newSong = function() {
         songArr.push(song);
         console.log(songArr);
     }
-};
+}; */
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -29,7 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
     createList();
 
     //Buttons -----------------------------------------------------------------
-    document.getElementById("buttonAdd").addEventListener("click", newSong);
+    document.getElementById("buttonAdd").addEventListener("click", function () {
+        songArr.push(new Song(
+            document.getElementById("title").value,
+            document.getElementById("artist").value,
+            document.getElementById("album").value,
+            document.getElementById("year").value,
+            document.getElementById("genre").value, 
+            document.getElementById("rating").value));
+        document.location.href = "index.html#ListAll";
+    });
     
     document.getElementById("buttonShow").addEventListener("click", function(){
         let display = songArr[0].toString();
@@ -46,8 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("rating").value = "";
     });
 
-
-
+    //sort by raiting
+    document.getElementById("buttonSortRating").addEventListener("click", function () {
+        songArr.sort(dynamicSort("Rating"));
+        createList();
+        document.location.href = "index.html#page3";
+    });
 
 
 
@@ -57,21 +70,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $(document).on("pagebeforeshow", "#page4", function (event) {
-        let localParm = localStorage.getItem("parm");
-        let localID = GetArrayPointer(localParm);
+        /*let localParm = localStorage.getItem("parm");
+        let localID = GetArrayPointer(localParm);*/
 
-        songArr = JSON.parse(localStorage.getItem(songArr));
+        let localID = localStorage.getItem('parm'); //get unique id
+
+        //songArr = JSON.parse(localStorage.getItem(songArr));
 
         console.log(songArr[localID]);
 
         //Maybe something like this?
         //document.getElementById("oneTitle").innerHTML = "The title is: " + songArr[localID].Title;
-        document.getElementById("oneTitle").innerHTML = "Title: " + songArr[localID].Title;
+        document.getElementById("oneTitle").innerHTML = localID.Title
+        /* 
         document.getElementById("oneArtist").innerHTML = "Artist: " + songArr[localID].Artist;
         document.getElementById("oneAlbum").innerHTML = "Album: " + songArr[localID].Album;
         document.getElementById("oneYear").innerHTML = "Year: " + songArr[localID].Year;
         document.getElementById("oneGenre").innerHTML = "Genre: " + songArr[localID].Genre;
-        document.getElementById("oneRating").innerHTML = "Rating: " + songArr[localID].Rating;
+        document.getElementById("oneRating").innerHTML = "Rating: " + songArr[localID].Rating;*/
         
     });
 }); 
@@ -85,7 +101,7 @@ function createList() {
             var li = document.createElement("li");
             li.classList.add("oneSong");
             li.setAttribute("data-parm", element.ID);
-            li.innerHTML = element.ID + ": " + element.Title + " " + element.Genre;
+            li.innerHTML = "\"" + element.Title + "\" (Rating: " + element.Rating + ")";
             ulSongList.appendChild(li);
     });
 
@@ -108,5 +124,13 @@ function GetArrayPointer(localID) {
         if (localID === songArr[i].ID) {
             return i;
         }
+    }
+}
+
+
+// Sorting Function
+function dynamicSort(property) {
+    return function (a, b) {
+            return a[property].localeCompare(b[property]);
     }
 }
