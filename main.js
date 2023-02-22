@@ -15,24 +15,22 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("genre").value, 
             document.getElementById("rating").value));
         document.location.href = "index.html#ListAll";
-    });
-    
-    /* Button: Show Song Added */
-    document.getElementById("buttonShow").addEventListener("click", function(){
-        let display = songArr[0].toString();
-        document.getElementById("show").value = display;
-        
+        ClearForm();
+        alert("Song Submitted");
     });
 
     /* Button: Clear Form Input */
     document.getElementById("buttonClear").addEventListener("click", function () {
-        document.getElementById("title").value = "";
-        document.getElementById("artist").value = "";
-        document.getElementById("album").value = "";
-        document.getElementById("year").value = "";
-        document.getElementById("genre").value = "";
-        document.getElementById("rating").value = "";
+        ClearForm();
+        alert("Form Cleared");
     });
+    
+    // /* Button: Show Song Added */
+    // document.getElementById("buttonShow").addEventListener("click", function(){
+    //     let display = songArr[0].toString();
+    //     document.getElementById("show").value = display;
+        
+    // });
 
     /* Button: Sort By Rating */
     document.getElementById("buttonSortRating").addEventListener("click", function () {
@@ -105,6 +103,18 @@ function GetArrayPointer(localID) {
         }
     }
 }
+
+
+/* Button: Clear Form Input */
+function ClearForm() {
+    document.getElementById("title").value = "";
+    document.getElementById("artist").value = "";
+    document.getElementById("album").value = "";
+    document.getElementById("year").value = "";
+    document.getElementById("genre").value = "";
+    document.getElementById("rating").value = "";
+}
+
 
 /*** Sorting Function ******************************************************************/
 function dynamicSort(property) {
